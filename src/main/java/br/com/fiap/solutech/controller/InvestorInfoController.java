@@ -46,7 +46,7 @@ public class InvestorInfoController {
 
     @PutMapping("{id}")
     @Transactional
-    public ResponseEntity <InvestorInfoDetailDto> update(@PathVariable("id") Long id, @RequestBody InvestorInfoUpdateDto dto){
+    public ResponseEntity <InvestorInfoDetailDto> update(@PathVariable("id") Long id, @RequestBody @Valid InvestorInfoUpdateDto dto){
         var investorInfo = investorInfoRepository.getReferenceById(id);
         investorInfo.updateData(dto);
         return ResponseEntity.ok(new InvestorInfoDetailDto(investorInfo));
