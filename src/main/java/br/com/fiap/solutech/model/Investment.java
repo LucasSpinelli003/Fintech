@@ -1,5 +1,8 @@
 package br.com.fiap.solutech.model;
 
+import br.com.fiap.solutech.dto.investment.InvestmentRegisterDto;
+import br.com.fiap.solutech.dto.investment.InvestmentUpdateDto;
+import br.com.fiap.solutech.dto.user.UserUpdateDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -35,6 +38,29 @@ public class Investment {
     private Long idUser;
 
 
+    public Investment(InvestmentRegisterDto dto) {
+        name = dto.name();
+        type = dto.type();
+        value = dto.value();
+        idAgency = dto.idAgency();
+        idUser = dto.idUser();
+    }
 
-
+    public void updateData(InvestmentUpdateDto dto) {
+        if(dto.name() != null){
+            name = dto.name();
+        }
+        if(dto.type() != null){
+            type = dto.type();
+        }
+        if(dto.value() != null){
+            value = dto.value();
+        }
+        if(dto.idAgency() != null){
+            idAgency = dto.idAgency();
+        }
+        if(dto.idUser() != null){
+            idUser = dto.idUser();
+        }
+    }
 }
