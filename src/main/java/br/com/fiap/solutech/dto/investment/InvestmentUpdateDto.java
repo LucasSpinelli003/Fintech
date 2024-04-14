@@ -10,9 +10,13 @@ public record InvestmentUpdateDto(
         String name,
 
         @Size(max = 150, min = 15, message = "The minimum mail size is 15 and the maximum is 150!")
-        String mail,
+        String type,
 
-        Double value
+        Double value,
+
+        Long idAgency,
+
+        Long idUser
 
 ) {
 }
