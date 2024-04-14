@@ -11,7 +11,7 @@ public record InvestmentRegisterDto(
    String name,
 
    @NotBlank(message = "Mail field cannot be empty!")
-   @Size(max = 150, min = 15, message = "The minimum mail size is 15 and the maximum is 150!")
+   @Size(max = 150, min = 6, message = "The minimum type size is 15 and the maximum is 150!")
    String type,
 
    @NotNull(message = "Value field cannot be empty!")
