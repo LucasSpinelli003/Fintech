@@ -28,7 +28,7 @@ public class Investment {
     @Column(length = 100, nullable = false)
     private String type;
 
-    @Column(precision = 9, scale = 3, nullable = false)
+    @Column( nullable = false)
     private Double value;
 
     @Column(name = "id_agency",nullable = false)
