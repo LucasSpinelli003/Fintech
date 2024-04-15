@@ -2,14 +2,13 @@ package br.com.fiap.solutech.model;
 
 import br.com.fiap.solutech.dto.investment.InvestmentRegisterDto;
 import br.com.fiap.solutech.dto.investment.InvestmentUpdateDto;
-import br.com.fiap.solutech.dto.user.UserUpdateDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.List;
 
-import java.util.zip.CheckedOutputStream;
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 
@@ -31,19 +30,20 @@ public class Investment {
     @Column( nullable = false)
     private Double value;
 
-    @Column(name = "id_agency",nullable = false)
-    private Long idAgency;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_agency", nullable = false)
+    private Agency agency;
 
-    @Column(name = "id_user",nullable = false)
-    private Long idUser;
+    @ManyToMany(mappedBy = "investment")
+    private List<User> users;
 
 
-    public Investment(InvestmentRegisterDto dto) {
+    public Investment(InvestmentRegisterDto dto, Agency agency, List<User> users) {
         name = dto.name();
         type = dto.type();
         value = dto.value();
-        idAgency = dto.idAgency();
-        idUser = dto.idUser();
+        this.agency = agency;
+        this.users = users;
     }
 
     public void updateData(InvestmentUpdateDto dto) {
@@ -56,11 +56,11 @@ public class Investment {
         if(dto.value() != null){
             value = dto.value();
         }
-        if(dto.idAgency() != null){
-            idAgency = dto.idAgency();
+        if(dto.agency() != null){
+            agency = dto.agency();
         }
-        if(dto.idUser() != null){
-            idUser = dto.idUser();
+        if(dto.user() != null){
+            users = dto.user();
         }
     }
 }

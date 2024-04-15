@@ -2,13 +2,13 @@ package br.com.fiap.solutech.model;
 
 import br.com.fiap.solutech.dto.agency.AgencyRegisterDto;
 import br.com.fiap.solutech.dto.agency.AgencyUpdateDto;
-import br.com.fiap.solutech.dto.user.UserRegisterDto;
-import br.com.fiap.solutech.repository.AgencyRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
@@ -24,6 +24,9 @@ public class Agency {
 
     @Column(length= 100,nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "agency")
+    private List<Investment> investiment;
 
     public Agency(AgencyRegisterDto dto) {
         name =  dto.name();

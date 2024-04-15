@@ -1,8 +1,10 @@
 package br.com.fiap.solutech.dto.investment;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import br.com.fiap.solutech.model.Agency;
+import br.com.fiap.solutech.model.User;
 import jakarta.validation.constraints.Size;
+
+import java.util.List;
 
 public record InvestmentUpdateDto(
 
@@ -14,9 +16,9 @@ public record InvestmentUpdateDto(
 
         Double value,
 
-        Long idAgency,
+        Agency agency,
 
-        Long idUser
+        List<User> user
 
 ) {
 }

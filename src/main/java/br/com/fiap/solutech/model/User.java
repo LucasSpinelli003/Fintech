@@ -5,6 +5,8 @@ import br.com.fiap.solutech.dto.user.UserUpdateDto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 
@@ -28,6 +30,15 @@ public class User {
 
     @Column(nullable = false)
     private Boolean notifications;
+
+    @OneToOne(mappedBy = "user")
+    private InvestorInfo investorInfo;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_user_investment", joinColumns = @JoinColumn(name = "id_investment"), inverseJoinColumns = @JoinColumn(name = "id_user"))
+    private List<Investment> investment;
+
+
 
     public User(UserRegisterDto dto) {
         name = dto.name();

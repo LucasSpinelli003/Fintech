@@ -18,22 +18,21 @@ public class InvestorInfo {
     @Column(name = "id_investor_info")
     private Long id;
 
-    @Column(name = "id_user", nullable = false)
-    private Long idUser;
-
     @Column(name = "lv_risk", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private RiskPatternType riskLevel;
 
-    public InvestorInfo(InvestorInfoRegisterDto dto) {
-        idUser = dto.idUser();
+    @JoinColumn(name = "id_user",nullable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private User user;
+
+
+    public InvestorInfo(InvestorInfoRegisterDto dto,  User user) {
+        this.user = user;
         riskLevel = dto.riskLevel();
     }
 
     public void updateData(InvestorInfoUpdateDto dto) {
-        if(dto.idUser() != null){
-            idUser = dto.idUser();
-        }
         if(dto.riskLevel() != null){
             riskLevel = dto.riskLevel();
         }
