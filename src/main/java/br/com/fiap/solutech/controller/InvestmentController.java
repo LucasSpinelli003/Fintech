@@ -4,7 +4,6 @@ import br.com.fiap.solutech.dto.investment.InvestmentDetailDto;
 import br.com.fiap.solutech.dto.investment.InvestmentListDto;
 import br.com.fiap.solutech.dto.investment.InvestmentRegisterDto;
 import br.com.fiap.solutech.dto.investment.InvestmentUpdateDto;
-import br.com.fiap.solutech.model.Agency;
 import br.com.fiap.solutech.model.Investment;
 import br.com.fiap.solutech.model.User;
 import br.com.fiap.solutech.repository.AgencyRepository;

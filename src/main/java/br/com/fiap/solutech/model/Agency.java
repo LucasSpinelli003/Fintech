@@ -2,8 +2,6 @@ package br.com.fiap.solutech.model;
 
 import br.com.fiap.solutech.dto.agency.AgencyRegisterDto;
 import br.com.fiap.solutech.dto.agency.AgencyUpdateDto;
-import br.com.fiap.solutech.dto.user.UserRegisterDto;
-import br.com.fiap.solutech.repository.AgencyRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
