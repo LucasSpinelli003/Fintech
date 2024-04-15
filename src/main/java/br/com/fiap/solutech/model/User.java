@@ -34,10 +34,8 @@ public class User {
     @OneToOne(mappedBy = "user")
     private InvestorInfo investorInfo;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "tb_user_investment", joinColumns = @JoinColumn(name = "id_investment"), inverseJoinColumns = @JoinColumn(name = "id_user"))
+    @ManyToMany(mappedBy = "users")
     private List<Investment> investment;
-
 
 
     public User(UserRegisterDto dto) {
