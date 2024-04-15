@@ -32,9 +32,12 @@ public class InvestorInfo {
         riskLevel = dto.riskLevel();
     }
 
-    public void updateData(InvestorInfoUpdateDto dto) {
+    public void updateData(InvestorInfoUpdateDto dto, User user) {
         if(dto.riskLevel() != null){
             riskLevel = dto.riskLevel();
+        }
+        if(user != null){
+            this.user = user;
         }
     }
 }

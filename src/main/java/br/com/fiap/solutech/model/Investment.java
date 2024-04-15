@@ -34,7 +34,8 @@ public class Investment {
     @JoinColumn(name = "id_agency", nullable = false)
     private Agency agency;
 
-    @ManyToMany(mappedBy = "investment")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "tb_user_investment", joinColumns = @JoinColumn(name = "id_investment"), inverseJoinColumns = @JoinColumn(name = "id_user"))
     private List<User> users;
 
 
@@ -46,7 +47,7 @@ public class Investment {
         this.users = users;
     }
 
-    public void updateData(InvestmentUpdateDto dto) {
+    public void updateData(InvestmentUpdateDto dto, Agency agency, List<User> users) {
         if(dto.name() != null){
             name = dto.name();
         }
@@ -56,11 +57,11 @@ public class Investment {
         if(dto.value() != null){
             value = dto.value();
         }
-        if(dto.agency() != null){
-            agency = dto.agency();
+        if(agency != null){
+            this.agency = agency;
         }
-        if(dto.user() != null){
-            users = dto.user();
+        if(!users.isEmpty()){
+            this.users = users;
         }
     }
 }

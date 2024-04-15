@@ -37,7 +37,7 @@ public class InvestorInfoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<InvestorInfoListDto>> listPaginated(Pageable pageable) {
+    public ResponseEntity<List<InvestorInfoListDto>> listAll(Pageable pageable) {
         var list = investorInfoRepository.findAll(pageable).stream().map(InvestorInfoListDto::new).toList();
         return ResponseEntity.ok(list);
     }
@@ -52,7 +52,8 @@ public class InvestorInfoController {
     @Transactional
     public ResponseEntity <InvestorInfoDetailDto> update(@PathVariable("id") Long id, @RequestBody @Valid InvestorInfoUpdateDto dto){
         var investorInfo = investorInfoRepository.getReferenceById(id);
-        investorInfo.updateData(dto);
+        var user = userRepository.getReferenceById(dto.userId());
+        investorInfo.updateData(dto, user);
         return ResponseEntity.ok(new InvestorInfoDetailDto(investorInfo));
     }
 

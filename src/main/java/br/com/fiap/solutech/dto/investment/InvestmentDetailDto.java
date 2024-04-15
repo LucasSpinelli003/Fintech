@@ -7,7 +7,7 @@ import br.com.fiap.solutech.model.Investment;
 
 import java.util.List;
 
-public record InvestmentDetailDto (Long id, String name, String type, Double value, AgencyDetailDto agency, List<UserDetailDto> user ) {
+public record InvestmentDetailDto (Long id, String name, String type, Double value, AgencyDetailDto agency, List<UserDetailDto> users ) {
 
     public InvestmentDetailDto(Investment investment){
         this(
@@ -16,6 +16,7 @@ public record InvestmentDetailDto (Long id, String name, String type, Double val
                 investment.getType(),
                 investment.getValue(),
                 new AgencyDetailDto(investment.getAgency()),
-                investment.getUsers().stream().map(UserDetailDto::new).toList());
+                investment.getUsers().stream().map(UserDetailDto::new).toList()
+        );
     }
 }

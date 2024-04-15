@@ -16,9 +16,9 @@ public record InvestmentUpdateDto(
 
         Double value,
 
-        Agency agency,
+        Long agencyId,
 
-        List<User> user
+        List<Long> usersId
 
 ) {
 }

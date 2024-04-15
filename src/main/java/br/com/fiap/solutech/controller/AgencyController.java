@@ -33,7 +33,7 @@ public class AgencyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AgencyListDto>> listPaginated(Pageable pageable) {
+    public ResponseEntity<List<AgencyListDto>> listAll(Pageable pageable) {
         var list = agencyRepository.findAll(pageable).stream().map(AgencyListDto::new).toList();
         return ResponseEntity.ok(list);
     }
