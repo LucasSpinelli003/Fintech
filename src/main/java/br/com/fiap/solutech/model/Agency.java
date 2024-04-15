@@ -10,6 +10,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 
@@ -24,6 +26,9 @@ public class Agency {
 
     @Column(length= 100,nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "agency")
+    private List<Investment> investiment;
 
     public Agency(AgencyRegisterDto dto) {
         name =  dto.name();
