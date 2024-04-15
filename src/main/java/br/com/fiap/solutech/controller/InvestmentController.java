@@ -4,6 +4,7 @@ import br.com.fiap.solutech.dto.investment.InvestmentDetailDto;
 import br.com.fiap.solutech.dto.investment.InvestmentListDto;
 import br.com.fiap.solutech.dto.investment.InvestmentRegisterDto;
 import br.com.fiap.solutech.dto.investment.InvestmentUpdateDto;
+import br.com.fiap.solutech.model.Agency;
 import br.com.fiap.solutech.model.Investment;
 import br.com.fiap.solutech.model.User;
 import br.com.fiap.solutech.repository.AgencyRepository;
@@ -47,7 +48,7 @@ public class InvestmentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<InvestmentListDto>> listPaginated(Pageable pageable) {
+    public ResponseEntity<List<InvestmentListDto>> listAll(Pageable pageable) {
         var list = investmentRepository.findAll(pageable).stream().map(InvestmentListDto::new).toList();
         return ResponseEntity.ok(list);
     }
@@ -62,7 +63,19 @@ public class InvestmentController {
     @Transactional
     public ResponseEntity <InvestmentDetailDto> update(@PathVariable("id") Long id, @RequestBody  @Valid InvestmentUpdateDto dto){
         var investment = investmentRepository.getReferenceById(id);
-        investment.updateData(dto);
+        Agency agency = null;
+        if(dto.agencyId() != null){
+             agency = agencyRepository.getReferenceById(dto.agencyId());
+        }
+        List<User> users = new ArrayList<>();
+        if(dto.usersId() != null){
+            for (Long userId : dto.usersId()) {
+                var user = userRepository.getReferenceById(userId);
+                users.add(user);
+            }
+        }
+
+        investment.updateData(dto, agency, users);
         return ResponseEntity.ok(new InvestmentDetailDto(investment));
     }
 

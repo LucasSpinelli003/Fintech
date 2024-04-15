@@ -8,7 +8,7 @@ import br.com.fiap.solutech.model.Investment;
 
 import java.util.List;
 
-public record InvestmentListDto (Long id, String name, String type, Double value, AgencyDetailDto agency, List<UserDetailDto> user) {
+public record InvestmentListDto (Long id, String name, String type, Double value, AgencyDetailDto agency, List<UserDetailDto> users) {
 
     public InvestmentListDto(Investment investment){
         this(
