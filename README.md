@@ -26,3 +26,12 @@ Nosso grupo estabeleceu como prazo máximo de entrega no dia 14/04/24, visando a
  Abrir o arquivo SolutechApplication e dar um run.
 ```
 
+## Link do Pitch de apresentação do projeto
+```
+- https://youtu.be/7Wj12oKL-Cs?si=Ck-WWXJSWrJliCVe
+```
+## Export das requisições no insomnia 
+```
+Se encontra na pasta "insomniaRequest".
+```
+
