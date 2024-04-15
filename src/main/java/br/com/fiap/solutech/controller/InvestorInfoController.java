@@ -6,6 +6,7 @@ import br.com.fiap.solutech.dto.investorInfo.InvestorInfoRegisterDto;
 import br.com.fiap.solutech.dto.investorInfo.InvestorInfoUpdateDto;
 import br.com.fiap.solutech.model.InvestorInfo;
 import br.com.fiap.solutech.repository.InvestorInfoRepository;
+import br.com.fiap.solutech.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,14 @@ import java.util.List;
 public class InvestorInfoController {
     @Autowired
     private InvestorInfoRepository investorInfoRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping
     @Transactional
     public ResponseEntity<InvestorInfoDetailDto> create(@RequestBody @Valid InvestorInfoRegisterDto dto, UriComponentsBuilder uriBuilder){
-        var investorInfo = new InvestorInfo(dto);
+        var user = userRepository.getReferenceById(dto.userId());
+        var investorInfo = new InvestorInfo(dto, user);
         investorInfoRepository.save(investorInfo);
         var uri = uriBuilder.path("/investor/info/{id}").buildAndExpand(investorInfo.getId()).toUri();
 
