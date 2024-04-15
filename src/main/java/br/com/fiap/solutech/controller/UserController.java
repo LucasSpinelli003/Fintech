@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserListDto>> listPaginated(Pageable pageable) {
+    public ResponseEntity<List<UserListDto>> listAll(Pageable pageable) {
         var list = userRepository.findAll(pageable).stream().map(UserListDto::new).toList();
         return ResponseEntity.ok(list);
     }
