@@ -31,7 +31,7 @@ public class User {
     @Column(nullable = false)
     private Boolean notifications;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private InvestorInfo investorInfo;
 
     @ManyToMany(mappedBy = "users")
@@ -43,6 +43,8 @@ public class User {
         mail = dto.mail();
         password = dto.password();
         notifications = dto.notifications();
+        investorInfo = new InvestorInfo(dto);
+        investorInfo.setUser(this);
     }
 
 
