@@ -1,14 +1,12 @@
 package br.com.fiap.solutech.controller;
 
-import br.com.fiap.solutech.dto.user.UserRegisterDto;
-import br.com.fiap.solutech.dto.user.UserDetailDto;
-import br.com.fiap.solutech.dto.user.UserListDto;
-import br.com.fiap.solutech.dto.user.UserUpdateDto;
+import br.com.fiap.solutech.dto.user.*;
 import br.com.fiap.solutech.domain.User;
 import br.com.fiap.solutech.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +33,18 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<UserListDto>> listAll(Pageable pageable) {
         var list = userRepository.findAll(pageable).stream().map(UserListDto::new).toList();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("by-name")
+    public ResponseEntity<Page<UserDetailDto>> searchByUserName(@RequestParam("name")String name, Pageable pageable){
+        var list = userRepository.searchByName(name, pageable).map(UserDetailDto::new);
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping("by-investment-name")
+    public ResponseEntity<Page<UserDetailDto>> searchByInvestmentName(@RequestParam("name")String name, Pageable pageable){
+        var list = userRepository.searchByInvestmentName(name, pageable).map(UserDetailDto::new);
         return ResponseEntity.ok(list);
     }
 
