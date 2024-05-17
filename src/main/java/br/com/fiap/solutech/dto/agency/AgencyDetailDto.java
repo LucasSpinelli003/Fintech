@@ -1,7 +1,6 @@
 package br.com.fiap.solutech.dto.agency;
 
-import br.com.fiap.solutech.model.Agency;
-import br.com.fiap.solutech.model.Investment;
+import br.com.fiap.solutech.domain.Agency;
 
 public record AgencyDetailDto (Long id, String name ) {
     public AgencyDetailDto(Agency agency){

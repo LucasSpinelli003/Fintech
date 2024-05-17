@@ -4,7 +4,7 @@ import br.com.fiap.solutech.dto.agency.AgencyDetailDto;
 import br.com.fiap.solutech.dto.agency.AgencyListDto;
 import br.com.fiap.solutech.dto.agency.AgencyRegisterDto;
 import br.com.fiap.solutech.dto.agency.AgencyUpdateDto;
-import br.com.fiap.solutech.model.Agency;
+import br.com.fiap.solutech.domain.Agency;
 import br.com.fiap.solutech.repository.AgencyRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
