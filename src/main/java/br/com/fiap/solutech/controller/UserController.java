@@ -4,7 +4,7 @@ import br.com.fiap.solutech.dto.user.UserRegisterDto;
 import br.com.fiap.solutech.dto.user.UserDetailDto;
 import br.com.fiap.solutech.dto.user.UserListDto;
 import br.com.fiap.solutech.dto.user.UserUpdateDto;
-import br.com.fiap.solutech.model.User;
+import br.com.fiap.solutech.domain.User;
 import br.com.fiap.solutech.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

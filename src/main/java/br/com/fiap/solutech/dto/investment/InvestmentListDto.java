@@ -3,7 +3,7 @@ package br.com.fiap.solutech.dto.investment;
 import br.com.fiap.solutech.dto.agency.AgencyDetailDto;
 import br.com.fiap.solutech.dto.user.UserDetailDto;
 
-import br.com.fiap.solutech.model.Investment;
+import br.com.fiap.solutech.domain.Investment;
 
 
 import java.util.List;

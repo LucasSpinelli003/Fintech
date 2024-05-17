@@ -1,7 +1,6 @@
-package br.com.fiap.solutech.model;
+package br.com.fiap.solutech.domain;
 
 
-import br.com.fiap.solutech.dto.investorInfo.InvestorInfoRegisterDto;
 import br.com.fiap.solutech.dto.investorInfo.InvestorInfoUpdateDto;
 import jakarta.persistence.*;
 import lombok.*;

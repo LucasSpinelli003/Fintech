@@ -1,4 +1,4 @@
-package br.com.fiap.solutech.model;
+package br.com.fiap.solutech.domain;
 
 import br.com.fiap.solutech.dto.user.UserRegisterDto;
 import br.com.fiap.solutech.dto.user.UserUpdateDto;

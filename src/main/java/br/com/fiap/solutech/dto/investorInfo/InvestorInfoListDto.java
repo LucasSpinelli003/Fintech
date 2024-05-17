@@ -1,9 +1,8 @@
 package br.com.fiap.solutech.dto.investorInfo;
 
 import br.com.fiap.solutech.dto.user.UserDetailDto;
-import br.com.fiap.solutech.model.InvestorInfo;
-import br.com.fiap.solutech.model.RiskPatternType;
-import br.com.fiap.solutech.model.User;
+import br.com.fiap.solutech.domain.InvestorInfo;
+import br.com.fiap.solutech.domain.RiskPatternType;
 
 
 public record InvestorInfoListDto(Long id, UserDetailDto user, RiskPatternType riskLevel) {

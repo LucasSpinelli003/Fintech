@@ -2,9 +2,8 @@ package br.com.fiap.solutech.controller;
 
 import br.com.fiap.solutech.dto.investorInfo.InvestorInfoDetailDto;
 import br.com.fiap.solutech.dto.investorInfo.InvestorInfoListDto;
-import br.com.fiap.solutech.dto.investorInfo.InvestorInfoRegisterDto;
 import br.com.fiap.solutech.dto.investorInfo.InvestorInfoUpdateDto;
-import br.com.fiap.solutech.model.InvestorInfo;
+import br.com.fiap.solutech.domain.InvestorInfo;
 import br.com.fiap.solutech.repository.InvestorInfoRepository;
 import br.com.fiap.solutech.repository.UserRepository;
 import jakarta.transaction.Transactional;

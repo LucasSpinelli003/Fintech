@@ -1,12 +1,10 @@
-package br.com.fiap.solutech.handler;
+package br.com.fiap.solutech.infra;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.UnexpectedTypeException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.rmi.UnexpectedException;
 
 @RestControllerAdvice
 public class ErrorHandler {
