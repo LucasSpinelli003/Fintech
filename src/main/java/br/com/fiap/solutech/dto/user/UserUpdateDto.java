@@ -1,5 +1,6 @@
 package br.com.fiap.solutech.dto.user;
 
+import br.com.fiap.solutech.domain.RiskPatternType;
 import jakarta.validation.constraints.Size;
 
 public record UserUpdateDto(
@@ -10,7 +11,9 @@ public record UserUpdateDto(
         String mail,
         @Size(max=30, min = 6, message = "Min password size is  and max 30!")
         String password,
-        boolean notifications
+        boolean notifications,
+
+        RiskPatternType riskLevel
 
 ) {
 }

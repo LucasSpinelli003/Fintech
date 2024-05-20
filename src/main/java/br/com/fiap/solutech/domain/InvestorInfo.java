@@ -1,6 +1,7 @@
 package br.com.fiap.solutech.domain;
 
 import br.com.fiap.solutech.dto.user.UserRegisterDto;
+import br.com.fiap.solutech.dto.user.UserUpdateDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,4 +29,5 @@ public class InvestorInfo {
     public InvestorInfo(UserRegisterDto dto) {
         riskLevel = dto.riskLevel();
     }
+
 }
