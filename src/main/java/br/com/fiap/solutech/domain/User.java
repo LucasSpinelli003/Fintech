@@ -60,6 +60,8 @@ public class User {
         }
         if(dto.notifications()){
             notifications = true;
+        }if(dto.riskLevel() != null){
+            investorInfo.setRiskLevel(dto.riskLevel());
         }
     }
 }
