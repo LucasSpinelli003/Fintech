@@ -7,12 +7,14 @@ import br.com.fiap.solutech.dto.investment.InvestmentUpdateDto;
 import br.com.fiap.solutech.domain.Agency;
 import br.com.fiap.solutech.domain.Investment;
 import br.com.fiap.solutech.domain.User;
+import br.com.fiap.solutech.dto.user.UserDetailDto;
 import br.com.fiap.solutech.repository.AgencyRepository;
 import br.com.fiap.solutech.repository.InvestmentRepository;
 import br.com.fiap.solutech.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,6 +59,12 @@ public class InvestmentController {
     public ResponseEntity<InvestmentListDto> searchById(@PathVariable("id") Long id){
         var investment = investmentRepository.getReferenceById(id);
         return ResponseEntity.ok(new InvestmentListDto(investment));
+    }
+
+    @GetMapping("by-name")
+    public ResponseEntity<Page<InvestmentDetailDto>> searchByUserName(@RequestParam("name")String name, Pageable pageable){
+        var list = investmentRepository.searchByName(name, pageable).map(InvestmentDetailDto::new);
+        return ResponseEntity.ok(list);
     }
 
     @PutMapping("{id}")
