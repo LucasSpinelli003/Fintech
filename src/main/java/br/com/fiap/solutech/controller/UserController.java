@@ -1,14 +1,20 @@
 package br.com.fiap.solutech.controller;
 
+import br.com.fiap.solutech.domain.Login;
+import br.com.fiap.solutech.dto.login.RegisterUserDto;
+import br.com.fiap.solutech.dto.login.UserDetailsDto;
 import br.com.fiap.solutech.dto.user.*;
 import br.com.fiap.solutech.domain.User;
+import br.com.fiap.solutech.repository.LoginRepository;
 import br.com.fiap.solutech.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -17,8 +23,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
     @Autowired
     private UserRepository userRepository;
+
 
     @PostMapping
     @Transactional
@@ -31,9 +39,10 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserListDto>> listAll(Pageable pageable) {
-        var list = userRepository.findAll(pageable).stream().map(UserListDto::new).toList();
-        return ResponseEntity.ok(list);
+    public ResponseEntity<Page<UserListDto>> listAll(Pageable pageable) {
+        var page = userRepository.findAll(pageable)
+                .map(UserListDto::new);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping("by-name")
@@ -68,5 +77,8 @@ public class UserController {
         userRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+
+
 
 }
